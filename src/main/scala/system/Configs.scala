@@ -92,3 +92,24 @@ class BaseFPGAConfig extends Config(new BaseConfig ++ new WithCoherentBusTopolog
 class DefaultFPGAConfig extends Config(new WithNSmallCores(1) ++ new BaseFPGAConfig)
 
 class CloneTileConfig extends Config(new WithCloneRocketTiles(7) ++ new WithNBigCores(1) ++ new WithCoherentBusTopology ++ new BaseConfig)
+
+class BaseLitexConfig extends Config(
+  new WithLitexMemPort() ++
+  new WithLitexMMIOPort() ++
+  new WithLitexSlavePort ++
+  new WithNExtTopInterrupts(8) ++
+  new WithCoherentBusTopology ++
+  new BaseConfig
+)
+
+class WithLitexHextConfig extends Config(
+  new WithHypervisor ++
+  new WithBitManip ++ new WithBitManipCrypto ++
+  new WithCryptoNIST ++ new WithCryptoSM
+)
+
+class LitexConfig_Medium extends Config(
+  new WithNMedCores(n = 1) ++
+  new WithMemoryDataBits(512) ++
+  new BaseLitexConfig
+)

@@ -25,7 +25,7 @@ EMPTY :=
 SPACE := $(EMPTY) $(EMPTY)
 COMMA := ,
 
-SBT ?= java -Xmx$(JVM_MEMORY) -Xss8M -jar $(base_dir)/sbt-launch.jar
+SBT ?= java -Xmx$(JVM_MEMORY) -Xss8M -Djava.security.manager=allow -jar $(base_dir)/sbt-launch.jar
 SHELL := /bin/bash
 
 FIRRTL_TRANSFORMS := \
